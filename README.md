@@ -68,3 +68,57 @@ Structured `PageContent` objects containing:
 
 ## 🧱 Architecture (Current Pipeline)
 
+User Input (Topic + HLD/LLD)
+↓
+Link Discovery (DuckDuckGo + Scoring)
+↓
+Web Scraping & Cleaning
+↓
+Normalized Content (Text + Images)
+
+
+---
+
+## 🔜 Next Steps
+
+### 🚀 Step 4: Information Extraction (LLM)
+- Convert scraped text into structured JSON:
+  - Components (services, databases, caches, queues)
+  - Relationships (data flow, request flow)
+  - Logical grouping (client, backend, storage, async)
+
+### 🎨 Step 5: Diagram Generation
+- Convert extracted graph into:
+  - Graphviz / Mermaid spec
+- Apply consistent styling rules (colors, shapes, layers)
+
+### 🖼 Step 6: Rendering
+- Generate final diagram as SVG/PNG
+
+### 🌐 Step 7: Minimal UI
+- Local UI (Streamlit or simple web app)
+- Inputs → Diagram output
+- Later: deploy on AWS (EC2)
+
+---
+
+## 🛠 Tech Stack
+
+- **Python**
+- **DuckDuckGo Search (ddgs)**
+- **Requests**
+- **BeautifulSoup**
+- **Readability-lxml**
+- **Playwright (fallback for blocked sites)**
+- *(Planned)* LLM API for extraction
+- *(Planned)* Graphviz / Mermaid for rendering
+
+---
+
+## 🧪 How to Run (Current)
+
+```bash
+# activate venv
+python test_scrape.py
+
+
