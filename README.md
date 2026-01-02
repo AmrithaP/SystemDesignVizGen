@@ -82,8 +82,7 @@ User Input (Topic + HLD/LLD) -> Link Discovery (DuckDuckGo + Scoring) ->  Web Sc
   - Logical grouping (client, backend, storage, async)
 
 ### 🎨 Step 5: Diagram Generation
-- Convert extracted graph into:
-  - Graphviz / Mermaid spec
+- Convert extracted graph 
 - Apply consistent styling rules (colors, shapes, layers)
 
 ### 🖼 Step 6: Rendering
