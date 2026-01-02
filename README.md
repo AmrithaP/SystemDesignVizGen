@@ -68,13 +68,7 @@ Structured `PageContent` objects containing:
 
 ## 🧱 Architecture (Current Pipeline)
 
-User Input (Topic + HLD/LLD)
-↓
-Link Discovery (DuckDuckGo + Scoring)
-↓
-Web Scraping & Cleaning
-↓
-Normalized Content (Text + Images)
+User Input (Topic + HLD/LLD) -> Link Discovery (DuckDuckGo + Scoring) ->  Web Scraping & Cleaning  -> Normalized Content (Text + Images)
 
 
 ---
