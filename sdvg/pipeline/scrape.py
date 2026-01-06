@@ -7,6 +7,8 @@ from bs4 import BeautifulSoup
 from readability import Document
 
 import re
+import time
+import random
 
 from playwright.sync_api import sync_playwright
 
@@ -145,19 +147,23 @@ def scrape_url(url: str, max_text_chars: int = 12000, max_images: int = 12) -> P
     #session = requests.Session()
     #used_jina = False
 
-    try:
-        r = session.get(url, headers=headers, timeout=25)
-        r.raise_for_status()
-        full_html = r.text
-    except requests.HTTPError as e:
-        # Medium fallback on 403
-        if "medium.com" in url and getattr(e.response, "status_code", None) == 403:
-            full_html = _fetch_html_playwright(url)
-            #_via_jina_reader(url, headers=headers, timeout=25)
-            #used_jina = True
-            used_browser = True
-        else:
-            raise
+    last_err = None
+    for attempt in range(3):
+        try:
+            # tiny jitter to avoid bot-pattern bursts
+            time.sleep(0.5 + random.random())
+
+            r = session.get(url, headers=headers, timeout=25)
+            r.raise_for_status()
+            full_html = r.text
+            break
+        except Exception as e:
+            last_err = e
+            time.sleep(1.5 * (attempt + 1))
+    else:
+        raise last_err
+
+
 
     title = _extract_title(full_html)
     

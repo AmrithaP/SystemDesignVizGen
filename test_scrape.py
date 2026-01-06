@@ -4,7 +4,7 @@ from sdvg.pipeline.scrape import scrape_url
 topic = "uber"
 level = "HLD"
 
-links = discover_links(topic, level,  max_links=12, max_results_per_query=20, allow_paywall=False)#max_links=5, allow_paywall=False)
+links = discover_links(topic, level,  max_links=5,  allow_paywall=False)#max_links=5, max_results_per_query=5,allow_paywall=False)
 print("\nLinks:")
 for l in links:
     print("-", l)
